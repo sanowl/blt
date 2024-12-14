@@ -80,7 +80,7 @@ def copy_dir(input_dir: str, output_dir: str) -> None:
         f"{input_dir}/ {output_dir}"
     )
     print(f"Copying command: {rsync_cmd}")
-    subprocess.call([rsync_cmd], shell=True)
+    subprocess.call([rsync_cmd], shell=False)
     print("Copy done.")
 
 
