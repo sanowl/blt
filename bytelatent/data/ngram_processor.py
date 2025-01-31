@@ -1,10 +1,10 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
-import pickle
 from pathlib import Path
 
 import numpy as np
 
 from bytelatent import ByteLatentError
+import fickling
 
 LOOKUP_OFFSET = 4
 
@@ -81,7 +81,7 @@ def reload_tables(
         with open(Path(ngram_table_dir) / f"ngram-{ngram}.pickle", "rb") as f:
             # These are already sorted by count
             # Value: tuple of: count, ngram, dataset
-            ngram_data: list[tuple[tuple, tuple[int, int, str]]] = pickle.load(f)[
+            ngram_data: list[tuple[tuple, tuple[int, int, str]]] = fickling.load(f)[
                 "counts"
             ]
             table = [ngram for ngram, _ in ngram_data][:size]
