@@ -5,7 +5,6 @@ import contextlib
 import logging
 import multiprocessing as mp
 import os
-import random
 import shutil
 import signal
 import socket
@@ -37,6 +36,7 @@ from torch.utils.checkpoint import (
 )
 
 from bytelatent.float8 import convert_linears_to_fp8
+import secrets
 
 logger = logging.getLogger()
 
@@ -190,7 +190,7 @@ def get_master_port(job_id: int) -> int:
         return int(os.environ["MASTER_PORT"])
     else:
         MIN_MASTER_PORT, MAX_MASTER_PORT = (20000, 60000)
-        rng = random.Random(job_id)
+        rng = secrets.SystemRandom().Random(job_id)
         return rng.randint(MIN_MASTER_PORT, MAX_MASTER_PORT)
 
 
