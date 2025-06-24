@@ -11,7 +11,7 @@ from huggingface_hub import snapshot_download
 
 def run_command(command):
     print(f"Running: {command}")
-    subprocess.run(command, shell=True, check=True)
+    subprocess.run(command, shell=False, check=True)
 
 
 def download_dataset(repo_id, local_dir, allow_patterns):

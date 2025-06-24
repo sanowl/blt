@@ -40,8 +40,7 @@ class ShardDatasetChunk(luigi.Task):
         destination = destination_dir / self._chunk_filename()
         subprocess.check_output(
             SHARD_SCRIPT.format(source=str(self.chunk_file), destination=destination),
-            shell=True,
-        )
+            shell=False)
         (
             Path(TARGET_DIR)
             / str(self.dataset_name)
