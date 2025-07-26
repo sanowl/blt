@@ -7,11 +7,12 @@ import time
 
 import requests
 from huggingface_hub import snapshot_download
+from security import safe_command
 
 
 def run_command(command):
     print(f"Running: {command}")
-    subprocess.run(command, shell=True, check=True)
+    safe_command.run(subprocess.run, command, shell=True, check=True)
 
 
 def download_dataset(repo_id, local_dir, allow_patterns):
